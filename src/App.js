@@ -14,10 +14,10 @@ import Header from './components/user/Header';
 import TaskDetail from './components/Todo/TaskDetail';
 
 const App = () => {
-	const appMode = useSelector(state => state.mode);
+	const Mode = useSelector(state => state.mode);
 
 	return (
-		<div className={`${appMode.mode && 'dark-mode'}`}>
+		<div className={`${Mode.mode && 'dark-mode'}`}>
 			<BrowserRouter>
 				<Header />
 				<Routes>
