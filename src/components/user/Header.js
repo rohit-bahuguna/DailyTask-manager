@@ -5,16 +5,17 @@ import { logoutUser } from "../../redux/actions/loginAction";
 import { changeMode } from "../../redux/actions/changeModeAction";
 import { logOut } from "../../utils/userAPI/userapi";
 import TonggleMode from "../TonggleMode";
-import Search from "../Search";
+
+
 
 
 const Header = () => {
-   const [searchNote, setSearchNote] = useState("");
+ 
    const [darkMode, setDarkMode] = useState(false);
    const navigate = useNavigate();
    const loginData = useSelector((state) => state.login);
    const dispatch = useDispatch();
-
+console.log(loginData);
 
    useEffect(() => {
       dispatch(changeMode(darkMode))
@@ -47,9 +48,7 @@ const Header = () => {
 
                   <div >
                      <ul className="navbar-nav">
-                        {loginData.status ? <li>
-                           <Search handleSearch={setSearchNote} />
-                        </li> : ''}
+                       
                         <li className="nav-item">
                            {loginData.status ? <Link to="#" className="nav-link" onClick={handleAuth}>
                               Log Out
@@ -64,6 +63,11 @@ const Header = () => {
                            <Link className="nav-link" >{loginData.user.name}</Link>
 
                         </li> : ''}
+                        { loginData.status  ? <li className="nav-item text-uppercase">
+                            {
+                           loginData.user.role === 'admin' ? <Link to="/adminpage" className="nav-link">AdminPage</Link> : ""
+                        }
+                       </li> : ''}
 
                         <li className="nav-item"><TonggleMode handleToggleDarkMode={setDarkMode} mode={darkMode} /></li>
                         <form className="form-inline">

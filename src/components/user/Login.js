@@ -35,7 +35,7 @@ const Login = () => {
   return (
     <>
       <ToastContainer/>
-      <section className="why_section layout_padding">
+      <section className=" layout_padding">
         <div className="container">
 
           <div className="row">
@@ -44,9 +44,9 @@ const Login = () => {
                 <form >
                   <fieldset>
 
-                    email: <input className="text-lowercase" type="email" onChange={(e) => setUser({ ...user, email: e.target.value })} name="password" required />
+                    email: <input className="text-lowercase" type="email" onChange={(e) => setUser({ ...user, email: e.target.value })} name="password" placeholder="Enter Your Email" required />
 
-                    Password: <input type="password" onChange={(e) => setUser({ ...user, password: e.target.value })} name="password" required />
+                    Password: <input type="password" onChange={(e) => setUser({ ...user, password: e.target.value })} name="password" required  placeholder="Enter Your Password"/>
 
                     <input className="rounded-pill" type="submit" value="Sign In" onClick={(e) => { loginFn(e) }} />
                     <br />

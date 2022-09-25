@@ -52,3 +52,9 @@ export const deleteTask = id => {
 	const response = axios.delete(url, { withCredentials: true });
 	return response;
 };
+
+export const getTaskByStatus = status => {
+	const url = `${baseUrl}/gettaskbystatus/${status}`;
+	const response = axios.get(url, { withCredentials: true });
+	return response;
+};

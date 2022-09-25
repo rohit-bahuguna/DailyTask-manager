@@ -6,7 +6,7 @@ const initialState = {
 
 export const taskReducer = (state = initialState, action) => {
 	const { type, payload } = action;
-	console.log(payload);
+
 	switch (type) {
 		case actionTypes.SET_TASK:
 			return { ...state, tasks: payload };

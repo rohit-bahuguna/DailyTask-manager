@@ -16,13 +16,6 @@ const Signup = () => {
 
 	const loginData = useSelector(state => state.login);
 
-	if (loginData.status) {
-		setTimeout(() => {
-			navigate('/login');
-		}, 5000);
-	}
-	console.log(user);
-
 	const signUpFn = e => {
 		// take two input values
 		e.preventDefault();
@@ -31,8 +24,10 @@ const Signup = () => {
 		signIn(user)
 			.then(response => {
 				dispatch(loginUser(response.data));
-				console.log(response);
 				toast.success('Account Created Successfully');
+				if (response.data.success) {
+					navigate('/home');
+				}
 			})
 			.catch(error => {
 				console.log(error);
@@ -54,9 +49,14 @@ const Signup = () => {
 										Name:
 										<input
 											type="text"
-											onChange={e => setUser({ ...user, name: e.target.value })}
+											onChange={e =>
+												setUser({
+													...user,
+													name: e.target.value
+												})}
 											name="name"
 											required
+											placeholder="Enter Your Name"
 										/>
 										email:
 										<input
@@ -66,14 +66,19 @@ const Signup = () => {
 												setUser({ ...user, email: e.target.value })}
 											name="password"
 											required
+											placeholder="Enter Your Email"
 										/>
 										Password:
 										<input
 											type="password"
 											onChange={e =>
-												setUser({ ...user, password: e.target.value })}
+												setUser({
+													...user,
+													password: e.target.value
+												})}
 											name="password"
 											required
+											placeholder="Enter Your Password"
 										/>
 										<input
 											className="rounded-pill"

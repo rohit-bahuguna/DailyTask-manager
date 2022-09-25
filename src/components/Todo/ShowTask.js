@@ -15,7 +15,7 @@ const ShowTask = ({ task }) => {
                 </div>
                 <div className="card-body">
 
-                    <h1>{task.heading}</h1>
+                    <h1  >{task.heading}</h1>
 
                 </div>
             </div></Link>}

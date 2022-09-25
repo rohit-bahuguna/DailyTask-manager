@@ -11,12 +11,10 @@ const TaskDetail = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const selectedTask = useSelector(state => state.selectedTask);
-
+	console.log(selectedTask.docs);
 	useEffect(() => {
 		getOneTask(id)
 			.then(response => {
-				console.log(response);
-
 				dispatch(setSelectedTask(response.data.task));
 			})
 			.catch(err => console.log(err));
@@ -53,42 +51,46 @@ const TaskDetail = () => {
 	return (
 		<div>
 			<ToastContainer />
-			<div className={`card showtask ${selectedTask.status}`}>
-				<h5 className="card-header">
+			<div className={`card taskDetail ${selectedTask.status}`}>
+				<h5>
 					status :{selectedTask.status}
 				</h5>
-				<div className="card-body">
-					<h5 className="card-title">
-						{selectedTask.heading}
-					</h5>
-					<p className="card-text">
-						{selectedTask.description}
-					</p>
-					<div className="container">
-						<Link to="/home" className="btn btn-primary">
-							Go Back
-						</Link>
+				<h5 className="card-title">
+					{selectedTask.heading}
+				</h5>
+				<p className="card-text">
+					{selectedTask.description}
+				</p>
+				<div>
+					{selectedTask.docs
+						? selectedTask.docs.map(value =>
+								<img src={value.secure_url} key={value.id} />
+							)
+						: ''}
+				</div>
+				<div className="container">
+					<Link to="/home" className="btn btn-primary">
+						Go Back
+					</Link>
 
-						{selectedTask.status !== 'complete'
-							? <div
-									className="btn btn-success"
-									onClick={() => updateStatus('complete')}>
-									Complete
-								</div>
-							: ''}
-						{selectedTask.status !== 'hold' &&
-						selectedTask.status !== 'complete'
-							? <div
-									className="btn btn-success"
-									onClick={() => updateStatus('hold')}>
-									Hold
-								</div>
-							: ''}
-						<div
-							className="btn btn-danger"
-							onClick={() => deleteAtask(selectedTask._id)}>
-							Delete
-						</div>
+					{selectedTask.status !== 'complete'
+						? <div
+								className="btn btn-success"
+								onClick={() => updateStatus('complete')}>
+								Complete
+							</div>
+						: ''}
+					{selectedTask.status !== 'hold' && selectedTask.status !== 'complete'
+						? <div
+								className="btn btn-success"
+								onClick={() => updateStatus('hold')}>
+								Hold
+							</div>
+						: ''}
+					<div
+						className="btn btn-danger"
+						onClick={() => deleteAtask(selectedTask._id)}>
+						Delete
 					</div>
 				</div>
 			</div>

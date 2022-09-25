@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Routes, BrowserRouter, Route } from 'react-router-dom';
 import Header from './components/user/Header';
 import TaskDetail from './components/Todo/TaskDetail';
+import AdminPage from './components/admin/AdminPage';
 
 const App = () => {
 	const Mode = useSelector(state => state.mode);
@@ -29,9 +30,6 @@ const App = () => {
 							</ProtectedRoute>
 						}
 					/>
-					<Route path="/" element={<LogIn />} />
-					<Route path="/login" element={<LogIn />} />
-					<Route path="/signin" element={<SignIn />} />
 					<Route
 						path="/taskdetail/:id"
 						element={
@@ -40,6 +38,17 @@ const App = () => {
 							</ProtectedRoute>
 						}
 					/>
+					<Route
+						path="/adminpage"
+						element={
+							<ProtectedRoute>
+								<AdminPage />
+							</ProtectedRoute>
+						}
+					/>
+					<Route path="/" element={<LogIn />} />
+					<Route path="/login" element={<LogIn />} />
+					<Route path="/signin" element={<SignIn />} />
 				</Routes>
 			</BrowserRouter>
 		</div>
