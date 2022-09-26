@@ -6,7 +6,6 @@ const initialTaskState = {
 
 export const AdminAllTasksReducer = (state = initialTaskState, action) => {
 	const { type, payload } = action;
-	console.log(payload, 'payload', type);
 	switch (type) {
 		case actionTypes.ADMIN_ALL_TASKS:
 			return { ...state, allTask: payload };
@@ -31,7 +30,6 @@ const initialUserState = {
 
 export const AdminAllUsersReducer = (state = initialUserState, action) => {
 	const { type, payload } = action;
-	console.log(payload, 'payload', type, 'type');
 	switch (type) {
 		case actionTypes.ADMIN_ALL_USERS:
 			return { ...state, allUser: payload };

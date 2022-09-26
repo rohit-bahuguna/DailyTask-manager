@@ -20,7 +20,7 @@ const Login = () => {
 
     logIn(user)
       .then(response => {
-       console.log(response);
+      
         dispatch(loginUser(response.data))
       
         navigate('/home')

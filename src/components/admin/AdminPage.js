@@ -13,21 +13,18 @@ const AdminPage = () => {
 	const dispatch = useDispatch();
 	const allUserData = useSelector(state => state.adminAllUsers.allUser);
 	const allTasksData = useSelector(state => state.adminAllTasks.allTask);
-	console.log(' from admin page', allUserData, allTasksData);
 
 	useEffect(
 		() => {
 			if (statusType === 'all') {
 				adminGetAllTask()
 					.then(response => {
-						//  console.log("all tasks", response.data.task);
 						dispatch(adminTasks(response.data.task));
 					})
 					.catch(error => console.log(error));
 			} else {
 				adminGetTaskByStatus(statusType)
 					.then(response => {
-						console.log(response.data.task);
 						dispatch(adminTasks(response.data.task));
 					})
 					.catch(error => console.log(error));
@@ -39,7 +36,6 @@ const AdminPage = () => {
 	useEffect(() => {
 		adminGetAllUser()
 			.then(response => {
-				//console.log("all users", response.data.users);
 				dispatch(adminUsers(response.data.users));
 			})
 			.catch(error => {

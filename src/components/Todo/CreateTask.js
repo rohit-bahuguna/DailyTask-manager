@@ -12,7 +12,6 @@ const CreateTask = () => {
 		docs: []
 	};
 	const [newTask, setNewTask] = useState(initialValues);
-	console.log(newTask);
 
 	const createNewTask = () => {
 		createTask(newTask)

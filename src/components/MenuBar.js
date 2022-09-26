@@ -17,7 +17,6 @@ const MenuBar = () => {
 			if (status === 'all') {
 				getAllTask()
 					.then(response => {
-						// console.log(response.data.tasks)
 						dispatch(setTask(response.data.tasks));
 					})
 					.catch(error => console.log(error));
@@ -29,7 +28,6 @@ const MenuBar = () => {
 		},
 		[status]
 	);
-	console.log(searchNote);
 	const SearchNote = searchBy => {};
 
 	return (

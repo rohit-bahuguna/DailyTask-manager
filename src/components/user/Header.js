@@ -15,7 +15,6 @@ const Header = () => {
    const navigate = useNavigate();
    const loginData = useSelector((state) => state.login);
    const dispatch = useDispatch();
-console.log(loginData);
 
    useEffect(() => {
       dispatch(changeMode(darkMode))
@@ -26,7 +25,7 @@ console.log(loginData);
    const handleAuth = () => {
 
       logOut().then(response => {
-         console.log(response.data);
+        
          dispatch(logoutUser(response.data))
       }).catch(error => console.log(error))
 

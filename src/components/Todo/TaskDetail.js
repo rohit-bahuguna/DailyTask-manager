@@ -11,7 +11,7 @@ const TaskDetail = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const selectedTask = useSelector(state => state.selectedTask);
-	console.log(selectedTask.docs);
+
 	useEffect(() => {
 		getOneTask(id)
 			.then(response => {
@@ -23,7 +23,6 @@ const TaskDetail = () => {
 	const updateStatus = status => {
 		updateTask(id, status)
 			.then(response => {
-				console.log('updated', response);
 				dispatch(setSelectedTask(response.data.updatedTask));
 				if (response.data.success) {
 					toast(response.data.message);

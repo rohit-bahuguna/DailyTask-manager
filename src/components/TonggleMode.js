@@ -3,7 +3,6 @@ import { MdOutlineLightMode, MdDarkMode } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 
 const TonggleMode = ({ handleToggleDarkMode, mode }) => {
-	console.log(mode);
 	return (
 		<div className="header">
 			<button
