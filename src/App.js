@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import SignIn from './components/user/Signup';
 import LogIn from './components/user/Login';
 import Home from './Home';
-import './css/style.css';
 import './css/responsive.css';
 import './css/home.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';

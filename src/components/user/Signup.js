@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../../redux/actions/loginAction';
 
@@ -14,10 +14,7 @@ const Signup = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
-	const loginData = useSelector(state => state.login);
-
 	const signUpFn = e => {
-		// take two input values
 		e.preventDefault();
 
 		// call api with name and password
@@ -33,7 +30,6 @@ const Signup = () => {
 				console.log(error);
 				toast.error(error.response.data.message);
 			});
-		// navigate('/login');
 	};
 	return (
 		<div>

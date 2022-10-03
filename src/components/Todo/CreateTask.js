@@ -17,7 +17,9 @@ const CreateTask = () => {
 		createTask(newTask)
 			.then(response => {
 				dispatch(createATask(response.data.task));
+
 				toast.success('Task Created Successfully');
+				setNewTask(initialValues);
 			})
 			.catch(error => console.log(error));
 	};

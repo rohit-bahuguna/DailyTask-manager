@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, {  useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../../redux/actions/loginAction";
 
@@ -11,8 +11,7 @@ const Login = () => {
   const [user, setUser] = useState({});
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
-  const loginData = useSelector(state => state.login);
+ 
  
   const loginFn = async (e) => {
 
@@ -26,9 +25,9 @@ const Login = () => {
         navigate('/home')
       }).catch(error => {
         console.log(error);
-        if (!error.response.data.success) {
-          toast.error(error.response.data.message)
-        }
+        
+          toast.error(error.response.data.errMessage)
+        
       });
 
   };
@@ -48,7 +47,7 @@ const Login = () => {
 
                     Password: <input type="password" onChange={(e) => setUser({ ...user, password: e.target.value })} name="password" required  placeholder="Enter Your Password"/>
 
-                    <input className="rounded-pill" type="submit" value="Sign In" onClick={(e) => { loginFn(e) }} />
+                    <input className="rounded-pill" type="submit" value="Log In" onClick={(e) => { loginFn(e) }} />
                     <br />
                     <Link to="/signin">
                       <input className="rounded-pill" type="submit" value="Create Account" />
